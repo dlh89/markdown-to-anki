@@ -36,6 +36,9 @@ questions_source_filenames = os.listdir(basepath)
 
 for filename in questions_source_filenames:
 	path = os.path.join(basepath, filename)
+	if not filename.endswith('.md'):
+		continue
+
 	questions_and_answers = get_questions_and_answers(path)
 
 	deck_id = random.randrange(1 << 30, 1 << 31) # deck ID must be unique
