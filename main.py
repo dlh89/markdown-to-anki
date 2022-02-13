@@ -7,13 +7,12 @@ model_id = random.randrange(1 << 30, 1 << 31) # model ID must be unique
 
 css = """
 	.card {
-		text-align: center;
-		font-size: 20px;
+		font-size: 16px;
 	}
 
-	#answer {
-		text-align: left;
-		font-size: 16px;
+	.question {
+		text-align: center;
+		font-size: 20px;
 	}
 """
 
@@ -30,8 +29,8 @@ my_model = genanki.Model(
 	templates = [
 		{
 			'name': 'Card 1',
-			'qfmt': '{{Question}}',
-			'afmt': '{{FrontSide}}<hr id="answer-hr">{{Answer}}',
+			'qfmt': '<div class="question" id="question"{{Question}}</div>',
+			'afmt': '{{FrontSide}}<hr id="answer-hr"><div class="answer" id="answer">{{Answer}}<div>',
 		},
 	],
 	css = css

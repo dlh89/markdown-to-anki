@@ -27,9 +27,7 @@ def get_questions_and_answers(source_markdown_path):
     index = index + 1 if index + 1 < len(questions) else index
     answer = part[1].split(questions[index][1])
     markdown_question = markdown.markdown(question[1], extensions=['codehilite', 'fenced_code'])
-    markdown_answer = '<div id="answer">'
-    markdown_answer += markdown.markdown(answer[0], extensions=['codehilite', 'fenced_code'])
-    markdown_answer += '</div>'
+    markdown_answer = markdown.markdown(answer[0], extensions=['codehilite', 'fenced_code'])
     markdown_answer = markdown_answer.replace('href="#table-of-contents"', 'href="#answer"')
     questions_and_answers.append([markdown_question, markdown_answer])
 
