@@ -18,6 +18,7 @@ def get_questions_and_answers(source_markdown_path):
 
   f = open(source_markdown_path, 'r')
   source_markdown = f.read()
+  source_markdown = source_markdown.replace('[â†‘] ', '') # remove invalid up arrow characters
   reference_links = re.findall('(- )(https.*)', source_markdown)
   for index, reference_link in enumerate(reference_links):
     source_markdown = source_markdown.replace(reference_link[1], f'[{reference_link[1]}]({reference_link[1]})')
