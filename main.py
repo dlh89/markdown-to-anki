@@ -7,6 +7,12 @@ model_id = random.randrange(1 << 30, 1 << 31) # model ID must be unique
 
 css = """
 	.card {
+		text-align: center;
+		font-size: 20px;
+	}
+
+	#answer {
+		text-align: left;
 		font-size: 16px;
 	}
 """
@@ -25,13 +31,14 @@ my_model = genanki.Model(
 		{
 			'name': 'Card 1',
 			'qfmt': '{{Question}}',
-			'afmt': '{{FrontSide}}<hr id="answer">{{Answer}}',
+			'afmt': '{{FrontSide}}<hr id="answer-hr">{{Answer}}',
 		},
 	],
 	css = css
 )
 
 basepath = 'questions-source'
+
 questions_source_filenames = os.listdir(basepath)
 
 for filename in questions_source_filenames:
@@ -42,10 +49,12 @@ for filename in questions_source_filenames:
 	questions_and_answers = get_questions_and_answers(path)
 
 	deck_id = random.randrange(1 << 30, 1 << 31) # deck ID must be unique
+	print('Building a deck from ' + filename)
+	deck_name = input('Please enter a name for your deck: ')
 
 	my_deck = genanki.Deck(
 		deck_id,
-		filename
+		deck_name
 	)
 	
 	for question in questions_and_answers:
@@ -56,4 +65,4 @@ for filename in questions_source_filenames:
 
 		my_deck.add_note(note)
 
-	genanki.Package(my_deck).write_to_file(filename + '.apkg')
+	genanki.Package(my_deck).write_to_file('./generated-decks/' + deck_name + '.apkg')
