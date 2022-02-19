@@ -21,7 +21,8 @@ def get_questions_and_answers(source_markdown_path):
   source_markdown = f.read()
   reference_links = re.findall('(- )(http.*)', source_markdown)
   for index, reference_link in enumerate(reference_links):
-    source_markdown = source_markdown.replace(reference_link[1], f'[{reference_link[1]}]({reference_link[1]})')
+    stripped_reference_link = str(reference_link[1]).strip()
+    source_markdown = source_markdown.replace(stripped_reference_link, f'[{stripped_reference_link}]({stripped_reference_link})')
 
   questions = re.findall('(?<!#)(### )(.*)', source_markdown)
   questions_and_answers = []
