@@ -1,6 +1,7 @@
 import markdown
 import os
 import re
+import codecs
 
 # questions = re.match('(?<!#)(###) (.*?)\n')
 # (?<!#)(###)(?s)(.*)
@@ -16,9 +17,8 @@ def get_questions_and_answers(source_markdown_path):
     print('Error: file not found')
     return
 
-  f = open(source_markdown_path, 'r')
+  f = codecs.open(source_markdown_path, mode='r', encoding='utf-8')
   source_markdown = f.read()
-  source_markdown = source_markdown.replace('[â†‘] ', '') # remove invalid up arrow characters
   reference_links = re.findall('(- )(http.*)', source_markdown)
   for index, reference_link in enumerate(reference_links):
     source_markdown = source_markdown.replace(reference_link[1], f'[{reference_link[1]}]({reference_link[1]})')
