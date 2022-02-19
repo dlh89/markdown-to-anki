@@ -3,7 +3,7 @@ import random
 import os
 from parse_question_text import get_questions_and_answers
 
-model_id = random.randrange(1 << 30, 1 << 31) # model ID must be unique
+model_id = 1372816901 # generated with random.randrange(1 << 30, 1 << 31)
 
 css = """
 	.card {
