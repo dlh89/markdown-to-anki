@@ -25,8 +25,7 @@ my_model = genanki.Model(
 	css = css
 )
 
-# basepath = 'questions-source'
-basepath = 'gitignored'
+basepath = 'questions-source'
 
 questions_source_filenames = os.listdir(basepath)
 
