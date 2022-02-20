@@ -5,43 +5,8 @@ from parse_question_text import get_questions_and_answers
 
 model_id = 1372816901 # generated with random.randrange(1 << 30, 1 << 31)
 
-css = """
-	.card {
-		font-size: 16px;
-	}
-
-	.question {
-		text-align: center;
-		font-size: 20px;
-	}
-
-	table {
-		display: block;
-		width: 100%;
-		width: max-content;
-		max-width: 100%;
-		overflow: auto;
-	}
-
-	table th {
-		font-weight: 600;
-	}
-
-	table th,table td {
-		padding: 6px 13px;
-	}
-
-	table tr {
-		background-color: rgba(0,0,0,.05);
-	}
-
-	table tr:nth-child(2n) {
-		background-color: rgba(0,0,0,.15);
-	}
-"""
-
-css_file = open('./css/pygments.css')
-css += css_file.read()
+css = open('./css/style.css').read()
+css += open('./css/third-party/pygments.css').read()
 
 my_model = genanki.Model(
 	model_id,
