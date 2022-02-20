@@ -14,6 +14,30 @@ css = """
 		text-align: center;
 		font-size: 20px;
 	}
+
+	table {
+		display: block;
+		width: 100%;
+		width: max-content;
+		max-width: 100%;
+		overflow: auto;
+	}
+
+	table th {
+		font-weight: 600;
+	}
+
+	table th,table td {
+		padding: 6px 13px;
+	}
+
+	table tr {
+		background-color: rgba(0,0,0,.05);
+	}
+
+	table tr:nth-child(2n) {
+		background-color: rgba(0,0,0,.15);
+	}
 """
 
 css_file = open('./css/pygments.css')
@@ -36,7 +60,8 @@ my_model = genanki.Model(
 	css = css
 )
 
-basepath = 'questions-source'
+# basepath = 'questions-source'
+basepath = 'gitignored'
 
 questions_source_filenames = os.listdir(basepath)
 
